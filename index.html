@@ -5,6 +5,55 @@
   <title>Your Name | Portfolio</title>
   <link rel="stylesheet" href="styles.css" /> <!-- Optional external stylesheet -->
   <style>
+  /* Parallax particle background */
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#0f2027, #203a43, #2c5364);
+    z-index: -1;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    scroll-behavior: smooth;
+  }
+
+  header, main, footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  header {
+    background-color: rgba(34, 34, 34, 0.8);
+    padding: 20px;
+    text-align: center;
+    animation: slideDown 1s ease-out;
+  }
+
+  section {
+    margin: 40px auto;
+    max-width: 900px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    animation: fadeInSection 1s ease forwards;
+  }
+
+  footer {
+    background-color: rgba(34, 34, 34, 0.8);
+    text-align: center;
+    padding: 20px;
+    position: relative;
+  }
+
+
+
     html {
       scroll-behavior: smooth;
     }
@@ -100,8 +149,13 @@
       100% { color: #00bfff; }
     }
   </style>
+  <!-- Add this in the <head> before </head> -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
 </head>
 <body>
+<!-- Add this right after <body> -->
+<div id="particles-js"></div>
 
   <header>
     <h1>Your Name</h1>
@@ -138,6 +192,59 @@
   <footer>
     <p>&copy; 2025 Your Name. Powered by caffeine and GitHub Pages.</p>
   </footer>
+<script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": {
+        "value": 100,
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": { "value": "#ffffff" },
+      "shape": {
+        "type": "circle",
+        "stroke": { "width": 0, "color": "#000000" }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": false
+      },
+      "size": {
+        "value": 3,
+        "random": true
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 3,
+        "direction": "none",
+        "straight": false,
+        "out_mode": "out"
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": { "enable": true, "mode": "grab" },
+        "onclick": { "enable": true, "mode": "push" },
+        "resize": true
+      },
+      "modes": {
+        "grab": { "distance": 200, "line_linked": { "opacity": 1 } },
+        "push": { "particles_nb": 4 }
+      }
+    },
+    "retina_detect": true
+  });
+</script>
 
 </body>
 </html>
