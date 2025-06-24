@@ -123,19 +123,20 @@ button, .card {
   background-color: transparent;
 }
 
-/* 👻 The ghostly aura behind the element */
 .glow-border::before {
   content: '';
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border-radius: 16px;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border-radius: 18px;
   z-index: -1;
   pointer-events: none;
-  background: transparent;
+  background: radial-gradient(circle, rgba(255,255,255,0.05), rgba(255,255,255,0));
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Just to force it to render visibly */
 }
+
 
 
 body.theme-light .glow-border::before {
