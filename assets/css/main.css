@@ -120,8 +120,10 @@ button, .card {
   position: relative;
   z-index: 0;
   border-radius: 12px;
-  background-color: transparent;
+  overflow: visible; /* allows the aura to "leak" outside */
+  background-color: rgba(255, 255, 255, 0.02); /* optional soft glassy bg */
 }
+
 
 .glow-border::before {
   content: '';
@@ -130,29 +132,36 @@ button, .card {
   left: -12px;
   right: -12px;
   bottom: -12px;
-  border-radius: 18px;
+  border-radius: inherit;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(255,255,255,0.05), rgba(255,255,255,0));
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Just to force it to render visibly */
+  background: radial-gradient(circle, transparent 40%, rgba(255,255,255,0.15));
+  /* fallback glow blur */
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
 }
 
 body.theme-light .glow-border::before {
-  background: radial-gradient(circle, rgba(102, 250, 255, 0.4), rgba(0, 208, 255, 0.2), transparent 70%);
+  background: radial-gradient(circle at center,
+    rgba(102, 250, 255, 0.4),
+    rgba(0, 208, 255, 0.2),
+    transparent 70%);
   animation: auraBluePulse 3s ease-in-out infinite;
-  filter:
-    drop-shadow(0 0 6px #00cfff)
-    drop-shadow(0 0 12px #66faff)
-    drop-shadow(0 0 20px #b3f1ff);
+  box-shadow:
+    0 0 10px #00cfff,
+    0 0 20px #66faff,
+    0 0 30px #b3f1ff;
 }
 
 body.theme-dark .glow-border::before {
-  background: radial-gradient(circle, rgba(255, 110, 127, 0.4), rgba(255, 23, 68, 0.2), transparent 70%);
+  background: radial-gradient(circle at center,
+    rgba(255, 110, 127, 0.4),
+    rgba(255, 23, 68, 0.2),
+    transparent 70%);
   animation: auraRedPulse 3s ease-in-out infinite;
-  filter:
-    drop-shadow(0 0 6px #ff2e4f)
-    drop-shadow(0 0 12px #ff6e7f)
-    drop-shadow(0 0 20px #ffc2c9);
+  box-shadow:
+    0 0 10px #ff2e4f,
+    0 0 20px #ff6e7f,
+    0 0 30px #ffc2c9;
 }
 
 @keyframes auraBluePulse {
