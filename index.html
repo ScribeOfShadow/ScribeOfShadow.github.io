@@ -8,19 +8,36 @@
   <link rel="stylesheet" href="assets/css/light.css" id="theme-style" />
   <script defer src="assets/js/theme-toggle.js"></script>
 </head>
-<body>
+
+<body class="theme-light fade-transition">
   <header>
-    <h1>Solomon David</h1>
-    <p>Indie Game Developer | Alchemist of Aesthetics</p>
-    <button id="themeToggle" aria-label="Toggle Theme">🌓</button>
+    <div class="container">
+      <h1>Solomon David</h1>
+      <p>Indie Game Developer | Alchemist of Aesthetics</p>
+      <div class="toggle-wrapper">
+        <button id="themeToggle" class="theme-button" aria-label="Toggle Theme" title="Toggle Theme">🌓</button>
+      </div>
+    </div>
   </header>
 
   <main>
     <section id="about">
-      <h2>About</h2>
-      <p>Reality is optional. I build worlds for a living.</p>
+      <div class="container">
+        <h2>About</h2>
+        <p>Reality is optional. I build worlds for a living.</p>
+      </div>
     </section>
-    <!-- More sections here -->
+
+    <!-- Future sections go here -->
+    <!-- Example:
+    <section id="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <p>Coming soon: worlds, wonders, and wicked code.</p>
+      </div>
+    </section>
+    -->
+
   </main>
 </body>
 </html>

@@ -13,6 +13,26 @@
   --accent-color: #d4af37; /* gold */
   --soft-glow: rgba(255, 255, 255, 0.6);
 }
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.toggle-wrapper {
+  margin-top: 1rem;
+}
+
+.theme-button {
+  font-size: 1.5rem;
+  border-radius: 50%;
+  padding: 0.5em 0.75em;
+}
 
 body {
   font-family: var(--font-main);
