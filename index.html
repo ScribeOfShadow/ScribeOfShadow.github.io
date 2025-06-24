@@ -1,250 +1,37 @@
+<!-- index.html -->
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your Portfolio Website" />
   <title>Solomon David | Portfolio</title>
-  <link rel="stylesheet" href="styles.css" /> <!-- Optional external stylesheet -->
-  <style>
-  /* Parallax particle background */
-  #particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(#0f2027, #203a43, #2c5364);
-    z-index: -1;
-  }
 
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    scroll-behavior: smooth;
-  }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
-  header, main, footer {
-    position: relative;
-    z-index: 1;
-  }
-
-  header {
-    background-color: rgba(34, 34, 34, 0.8);
-    padding: 20px;
-    text-align: center;
-    animation: slideDown 1s ease-out;
-  }
-
-  section {
-    margin: 40px auto;
-    max-width: 900px;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    animation: fadeInSection 1s ease forwards;
-  }
-
-  footer {
-    background-color: rgba(34, 34, 34, 0.8);
-    text-align: center;
-    padding: 20px;
-    position: relative;
-  }
-
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      animation: fadeInBody 1.5s ease-in;
-    }
-
-    header {
-      background-color: #222;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      animation: slideDown 1s ease-out;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #00bfff;
-      transform: scale(1.1);
-    }
-
-    main {
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    section {
-      opacity: 0;
-      animation: fadeInSection 1s ease forwards;
-      animation-delay: 0.5s;
-      margin-bottom: 40px;
-    }
-
-    section:nth-of-type(2) {
-      animation-delay: 0.8s;
-    }
-
-    section:nth-of-type(3) {
-      animation-delay: 1.1s;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #222;
-      color: white;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      animation: slideUp 1.5s ease-out;
-    }
-
-    .highlight {
-      color: #007acc;
-      animation: colorPulse 2s infinite alternate;
-    }
-
-    /* Animations */
-    @keyframes fadeInBody {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes fadeInSection {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes colorPulse {
-      0% { color: #007acc; }
-      100% { color: #00bfff; }
-    }
-  </style>
-  <!-- Add this in the <head> before </head> -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-<!-- Add this right after <body> -->
-<div id="particles-js"></div>
-
   <header>
-    <h1>Solomon David</h1>
-    <p><span class="highlight">Indie Game Developer</span> | Fantasy ARPGs | Code & Chaos</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+   <h1 class="glow-text">Welcome to My Domain</h1>
+<p class="accent">This text is my royal signature color.</p>
+
   </header>
+  <body>
+    <div class="theme-toggle-container">
+  <input type="checkbox" id="themeSwitch" />
+  <label for="themeSwitch" class="theme-toggle"></label>
+</div>
 
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Hello there! I’m a one-person dev army building fantasy action RPGs that combine swords, spells, and stories. My focus is gameplay-first design, immersive worlds, and crafting experiences players will remember like that first epic boss fight.</p>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>Project Emberfall</strong> – A soulslike with elemental combat and procedurally generated lore.</li>
-        <li><strong>Wyrmwood</strong> – A pixel-art rogue-lite with deck-building mechanics (aka *cards + dragons = fun*).</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Got feedback, questions, or want to collaborate on something awesome? Reach out!</p>
-      <p>Email: <a href="mailto:solomon.davidza@gmail.com">solomon.davidza@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/ScribeOfShadow" target="_blank">@ScribeOfShadow</a></p>
-    </section>
-  </main>
+  </body>
 
   <footer>
-    <p>&copy; 2025 Your Name. Powered by caffeine and GitHub Pages.</p>
+    <p>© 2025 Solomon David. All rights reserved.</p>
+    <!-- Add this inside your <body>, maybe in the nav or footer -->
   </footer>
-<script>
-  particlesJS("particles-js", {
-    "particles": {
-      "number": {
-        "value": 100,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": { "value": "#ffffff" },
-      "shape": {
-        "type": "circle",
-        "stroke": { "width": 0, "color": "#000000" }
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false
-      },
-      "size": {
-        "value": 3,
-        "random": true
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 3,
-        "direction": "none",
-        "straight": false,
-        "out_mode": "out"
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": { "enable": true, "mode": "grab" },
-        "onclick": { "enable": true, "mode": "push" },
-        "resize": true
-      },
-      "modes": {
-        "grab": { "distance": 200, "line_linked": { "opacity": 1 } },
-        "push": { "particles_nb": 4 }
-      }
-    },
-    "retina_detect": true
-  });
-</script>
 
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

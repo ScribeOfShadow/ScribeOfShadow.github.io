@@ -1,0 +1,60 @@
+/* assets/css/style.css */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-color: #d4af37;
+  --glow-gradient: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+[data-theme="dark"] {
+  --bg-color: #0a0a0a;
+  --text-color: #f1f1f1;
+  --accent-color: #c0c0c0;
+  --glow-gradient: linear-gradient(90deg, #ff416c, #ff4b2b);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  transition: background 0.4s, color 0.4s;
+}
+
+.accent {
+  color: var(--accent-color);
+}
+
+.glow-text {
+  background: var(--glow-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.glow-border {
+  border: 2px solid transparent;
+  position: relative;
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  z-index: -1;
+  background: var(--glow-gradient);
+  filter: blur(6px);
+  border-radius: inherit;
+  animation: flow-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px var(--accent-color); }
+  50% { box-shadow: 0 0 20px var(--accent-color); }
+}
+
+@keyframes flow-glow {
+  0% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.6; transform: scale(1); }
+}
