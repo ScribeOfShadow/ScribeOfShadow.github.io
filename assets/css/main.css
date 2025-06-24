@@ -122,40 +122,39 @@ button, .card {
   background-clip: padding-box;
 }
 
-/* Light theme blue energy aura gradient */
+/* Light theme lighter blue energy aura */
 body.theme-light .glow-border::before {
-  background: linear-gradient(270deg, #004e92, #00aaff, #66d9ff, #00aaff, #004e92);
+  background: linear-gradient(270deg, #3a89c9, #5ec1ff, #a1d8ff, #5ec1ff, #3a89c9);
   animation: energy-blue-pulse 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 6px #00aaff);
+  filter: drop-shadow(0 0 8px #5ec1ff);
 }
 
-/* Dark theme red energy aura gradient */
+/* Dark theme lighter red energy aura */
 body.theme-dark .glow-border::before {
-  background: linear-gradient(270deg, #7b0000, #ff1e1e, #ff6b6b, #ff1e1e, #7b0000);
+  background: linear-gradient(270deg, #a63232, #ff4d4d, #ff8a8a, #ff4d4d, #a63232);
   animation: energy-red-pulse 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 6px #ff1e1e);
+  filter: drop-shadow(0 0 8px #ff4d4d);
 }
 
-
-/* Smooth animated gradient movement + pulse */
+/* Adjusted pulse animations for lighter glow */
 @keyframes energy-blue-pulse {
   0%, 100% {
     background-position: 0% 50%;
-    filter: drop-shadow(0 0 6px #00aaff);
+    filter: drop-shadow(0 0 8px #5ec1ff);
   }
   50% {
     background-position: 100% 50%;
-    filter: drop-shadow(0 0 12px #66d9ff);
+    filter: drop-shadow(0 0 14px #a1d8ff);
   }
 }
 
 @keyframes energy-red-pulse {
   0%, 100% {
     background-position: 0% 50%;
-    filter: drop-shadow(0 0 6px #ff1e1e);
+    filter: drop-shadow(0 0 8px #ff4d4d);
   }
   50% {
     background-position: 100% 50%;
-    filter: drop-shadow(0 0 12px #ff6b6b);
+    filter: drop-shadow(0 0 14px #ff8a8a);
   }
 }
