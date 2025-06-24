@@ -2,20 +2,21 @@
 :root {
   --bg-color: #ffffff;
   --text-color: #111111;
-  --accent-color: #d4af37;
-  --glow-gradient: linear-gradient(90deg, #4facfe, #00f2fe);
+  --accent-color: #d4af37; /* gold */
+  --glow-gradient: linear-gradient(90deg, #4facfe, #00f2fe); /* blue energy */
   --card-bg: #ffffff;
-  --card-text: #d4af37;
+  --card-text: var(--accent-color);
 }
 
 [data-theme="dark"] {
   --bg-color: #0a0a0a;
   --text-color: #f1f1f1;
-  --accent-color: #c0c0c0;
-  --glow-gradient: linear-gradient(90deg, #ff416c, #ff4b2b);
+  --accent-color: #c0c0c0; /* silver */
+  --glow-gradient: linear-gradient(90deg, #ff416c, #ff4b2b); /* red energy */
   --card-bg: #000000;
-  --card-text: #c0c0c0;
+  --card-text: var(--accent-color);
 }
+
 
 body {
   background-color: var(--bg-color);
@@ -32,41 +33,31 @@ body {
   position: relative;
   display: inline-block;
   border-radius: 1rem;
-  
-  /* This box-shadow is outside-only glow */
-  box-shadow:
-    0 0 15px 4px var(--accent-color),
-    0 0 40px 8px var(--accent-color);
-  
-  /* Animate the glow */
-  animation: flow-glow 4s ease-in-out infinite;
+  z-index: 0;
 }
 
-
-
-
-/* This creates the OUTER glow around the card */
 .glow-wrapper::before {
   content: '';
   position: absolute;
   top: -8px; left: -8px; right: -8px; bottom: -8px;
   border-radius: inherit;
   background: var(--glow-gradient);
-  z-index: -1;
-  filter: blur(12px);
+  filter: blur(20px);
   opacity: 0.7;
+  z-index: -1;
   animation: flow-glow 4s ease-in-out infinite;
 }
 
 .glow-border {
+  position: relative;
   border: 2px solid var(--accent-color);
   background-color: var(--card-bg);
   color: var(--card-text);
   border-radius: 1rem;
   padding: 2rem;
-  position: relative;
   z-index: 1;
 }
+
 
 
 @keyframes flow-glow {
