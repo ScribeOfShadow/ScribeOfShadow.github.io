@@ -116,24 +116,23 @@ button, .card {
   transition: box-shadow 0.3s ease;
 }
 
+/* Glow border base */
 .glow-border {
-  position: relative;
-  z-index: 0;
-  border-radius: 12px;
-  background-color: transparent;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
-/* Light theme: Electric bright blue aura */
+/* Light theme - clearer blue glow */
 body.theme-light .glow-border::before {
   background: linear-gradient(270deg, #007fff, #00d0ff, #66faff, #00d0ff, #007fff);
-  animation: energy-blue-pulse 2.5s ease-in-out infinite;
+  animation: energy-blue-pulse 4s ease-in-out infinite;
   filter:
     drop-shadow(0 0 6px #00d0ff)
     drop-shadow(0 0 12px #00d0ff)
     drop-shadow(0 0 24px #66faff);
 }
 
-/* Dark theme: Fiery bright red aura */
+/* Dark theme - clearer red glow */
 body.theme-dark .glow-border::before {
   background: linear-gradient(270deg, #c70039, #ff1744, #ff6e7f, #ff1744, #c70039);
   animation: energy-red-pulse 2.5s ease-in-out infinite;
@@ -143,38 +142,27 @@ body.theme-dark .glow-border::before {
     drop-shadow(0 0 24px #ff6e7f);
 }
 
-/* Enhanced animation for fast, pulsing magical aura */
+/* Animations */
 @keyframes energy-blue-pulse {
   0%, 100% {
     background-position: 0% 50%;
-    filter:
-      drop-shadow(0 0 6px #00d0ff)
-      drop-shadow(0 0 12px #00d0ff)
-      drop-shadow(0 0 24px #66faff);
+    filter: drop-shadow(0 0 10px #4eb8ff) drop-shadow(0 0 20px #b3e5ff);
   }
   50% {
     background-position: 100% 50%;
-    filter:
-      drop-shadow(0 0 12px #66faff)
-      drop-shadow(0 0 18px #a5ffff)
-      drop-shadow(0 0 32px #d0ffff);
+    filter: drop-shadow(0 0 15px #b3e5ff) drop-shadow(0 0 30px #dfffff);
   }
 }
 
 @keyframes energy-red-pulse {
   0%, 100% {
     background-position: 0% 50%;
-    filter:
-      drop-shadow(0 0 6px #ff1744)
-      drop-shadow(0 0 12px #ff1744)
-      drop-shadow(0 0 24px #ff6e7f);
+    filter: drop-shadow(0 0 10px #ff3b3b) drop-shadow(0 0 20px #ff9d9d);
   }
   50% {
     background-position: 100% 50%;
-    filter:
-      drop-shadow(0 0 12px #ff6e7f)
-      drop-shadow(0 0 18px #ffc1c9)
-      drop-shadow(0 0 32px #ffe8ec);
+    filter: drop-shadow(0 0 15px #ff9d9d) drop-shadow(0 0 30px #ffdada);
   }
 }
+
 
