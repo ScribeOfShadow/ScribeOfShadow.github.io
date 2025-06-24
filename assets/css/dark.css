@@ -1,0 +1,32 @@
+/* assets/css/dark.css */
+
+:root {
+  --bg-color: #0a0a0a;
+  --text-color: #eeeeee;
+  --accent-color: #cfa33d; /* antique gold */
+  --blood-red: #7b1e1e;
+}
+
+body {
+  background: radial-gradient(circle at center, #1a1a1a, #000000);
+  color: var(--text-color);
+}
+
+header, section {
+  background: rgba(20, 20, 20, 0.85);
+  border: 1px solid var(--accent-color);
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(207, 163, 61, 0.3), inset 0 0 10px rgba(123, 30, 30, 0.1);
+  transition: all 0.6s ease;
+}
+
+button {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+button:hover {
+  background-color: var(--blood-red);
+  border-color: var(--blood-red);
+  color: white;
+}

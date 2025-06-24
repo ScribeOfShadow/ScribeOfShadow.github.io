@@ -1,0 +1,59 @@
+/* assets/css/main.css */
+
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --transition-speed: 0.6s;
+  --font-main: 'Inter', sans-serif;
+
+  /* Light mode (default) */
+  --bg-color: #fdfdfd;
+  --text-color: #1a1a1a;
+  --accent-color: #d4af37; /* gold */
+  --soft-glow: rgba(255, 255, 255, 0.6);
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  color: var(--accent-color);
+}
+
+button {
+  background: none;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 0.5em 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+}
+
+/* Theme transition effect */
+body.theme-light,
+body.theme-dark {
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease;
+}
+
+.fade-transition {
+  animation: fadeIn var(--transition-speed) ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
