@@ -123,58 +123,58 @@ button, .card {
   background-color: transparent;
 }
 
-.glow-border::before {
-  content: '';
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  right: -12px;
-  bottom: -12px;
-  border-radius: 18px;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(255,255,255,0.05), rgba(255,255,255,0));
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Just to force it to render visibly */
-}
-
-
-
+/* Light theme: Electric bright blue aura */
 body.theme-light .glow-border::before {
-  background: radial-gradient(circle, rgba(102, 250, 255, 0.4), rgba(0, 208, 255, 0.2), transparent 70%);
-  animation: auraBluePulse 3s ease-in-out infinite;
+  background: linear-gradient(270deg, #007fff, #00d0ff, #66faff, #00d0ff, #007fff);
+  animation: energy-blue-pulse 2.5s ease-in-out infinite;
   filter:
-    drop-shadow(0 0 6px #00cfff)
-    drop-shadow(0 0 12px #66faff)
-    drop-shadow(0 0 20px #b3f1ff);
+    drop-shadow(0 0 6px #00d0ff)
+    drop-shadow(0 0 12px #00d0ff)
+    drop-shadow(0 0 24px #66faff);
 }
 
+/* Dark theme: Fiery bright red aura */
 body.theme-dark .glow-border::before {
-  background: radial-gradient(circle, rgba(255, 110, 127, 0.4), rgba(255, 23, 68, 0.2), transparent 70%);
-  animation: auraRedPulse 3s ease-in-out infinite;
+  background: linear-gradient(270deg, #c70039, #ff1744, #ff6e7f, #ff1744, #c70039);
+  animation: energy-red-pulse 2.5s ease-in-out infinite;
   filter:
-    drop-shadow(0 0 6px #ff2e4f)
-    drop-shadow(0 0 12px #ff6e7f)
-    drop-shadow(0 0 20px #ffc2c9);
+    drop-shadow(0 0 6px #ff1744)
+    drop-shadow(0 0 12px #ff1744)
+    drop-shadow(0 0 24px #ff6e7f);
 }
-@keyframes auraBluePulse {
+
+/* Enhanced animation for fast, pulsing magical aura */
+@keyframes energy-blue-pulse {
   0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
+    background-position: 0% 50%;
+    filter:
+      drop-shadow(0 0 6px #00d0ff)
+      drop-shadow(0 0 12px #00d0ff)
+      drop-shadow(0 0 24px #66faff);
   }
   50% {
-    transform: scale(1.05);
-    opacity: 1;
+    background-position: 100% 50%;
+    filter:
+      drop-shadow(0 0 12px #66faff)
+      drop-shadow(0 0 18px #a5ffff)
+      drop-shadow(0 0 32px #d0ffff);
   }
 }
 
-@keyframes auraRedPulse {
+@keyframes energy-red-pulse {
   0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
+    background-position: 0% 50%;
+    filter:
+      drop-shadow(0 0 6px #ff1744)
+      drop-shadow(0 0 12px #ff1744)
+      drop-shadow(0 0 24px #ff6e7f);
   }
   50% {
-    transform: scale(1.05);
-    opacity: 1;
+    background-position: 100% 50%;
+    filter:
+      drop-shadow(0 0 12px #ff6e7f)
+      drop-shadow(0 0 18px #ffc1c9)
+      drop-shadow(0 0 32px #ffe8ec);
   }
 }
 
