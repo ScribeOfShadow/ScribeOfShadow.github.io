@@ -30,10 +30,20 @@ body {
 
 .glow-wrapper {
   position: relative;
-  display: inline-block; /* Or block, depending on layout */
+  display: inline-block;
   border-radius: 1rem;
-  z-index: 0;
+  
+  /* This box-shadow is outside-only glow */
+  box-shadow:
+    0 0 15px 4px var(--accent-color),
+    0 0 40px 8px var(--accent-color);
+  
+  /* Animate the glow */
+  animation: flow-glow 4s ease-in-out infinite;
 }
+
+
+
 
 /* This creates the OUTER glow around the card */
 .glow-wrapper::before {
@@ -49,17 +59,30 @@ body {
 }
 
 .glow-border {
-  position: relative;
   border: 2px solid var(--accent-color);
   background-color: var(--card-bg);
   color: var(--card-text);
   border-radius: 1rem;
   padding: 2rem;
+  position: relative;
   z-index: 1;
 }
 
+
 @keyframes flow-glow {
-  0% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-  100% { opacity: 0.6; transform: scale(1); }
+  0% {
+    box-shadow:
+      0 0 10px 3px var(--accent-color),
+      0 0 30px 6px var(--accent-color);
+  }
+  50% {
+    box-shadow:
+      0 0 20px 6px var(--accent-color),
+      0 0 50px 12px var(--accent-color);
+  }
+  100% {
+    box-shadow:
+      0 0 10px 3px var(--accent-color),
+      0 0 30px 6px var(--accent-color);
+  }
 }
