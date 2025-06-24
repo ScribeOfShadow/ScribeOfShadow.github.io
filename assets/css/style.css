@@ -28,11 +28,24 @@ body {
   color: var(--accent-color);
 }
 
-.glow-text {
+.glow-wrapper {
+  position: relative;
+  display: inline-block; /* Or block, depending on layout */
+  border-radius: 1rem;
+  z-index: 0;
+}
+
+/* This creates the OUTER glow around the card */
+.glow-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: -8px; right: -8px; bottom: -8px;
+  border-radius: inherit;
   background: var(--glow-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
+  z-index: -1;
+  filter: blur(12px);
+  opacity: 0.7;
+  animation: flow-glow 4s ease-in-out infinite;
 }
 
 .glow-border {
@@ -42,21 +55,7 @@ body {
   color: var(--card-text);
   border-radius: 1rem;
   padding: 2rem;
-  overflow: hidden;
-  z-index: 0;
-}
-
-/* Subtle background aura effect behind the border */
-.glow-border::before {
-  content: '';
-  position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
-  z-index: -1;
-  border-radius: inherit;
-  background: var(--glow-gradient);
-  filter: blur(8px);
-  opacity: 0.7;
-  animation: flow-glow 4s ease-in-out infinite;
+  z-index: 1;
 }
 
 @keyframes flow-glow {
