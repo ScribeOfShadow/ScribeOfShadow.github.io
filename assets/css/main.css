@@ -7,75 +7,41 @@
   --transition-speed: 0.6s;
   --font-main: 'Inter', sans-serif;
 
-  /* Default colors (fallback) */
-  --bg-color: #fff;
-  --text-color: #333;
-  --accent-color: #d4af37; /* gold */
+  /* Default colors */
+  --bg-color-light: #ffffff;
+  --bg-color-dark: #000000;
+  --text-color-light: #d4af37; /* gold */
+  --text-color-dark: #c0c0c0;  /* silver */
+
+  --glow-gradient-blue: linear-gradient(270deg, #00c6ff, #0072ff, #00c6ff);
+  --glow-gradient-red: linear-gradient(270deg, #ff0000, #7b1e1e, #ff0000);
 }
 
 /* Base styles */
 body {
   font-family: var(--font-main);
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
   margin: 0;
   padding: 0;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-h1, h2, h3 {
-  font-weight: 700;
-  margin: 0 0 0.5em 0;
+/* Light theme */
+body.theme-light {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
 }
 
-p {
-  line-height: 1.5;
-  margin-bottom: 1em;
+/* Dark theme */
+body.theme-dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
 }
 
-/* Container for layout */
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
-/* Header styling */
-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding-top: 2rem;
-}
-
-/* Button base style */
-button {
-  font-family: var(--font-main);
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  padding: 0.6em 1.2em;
-  font-size: 1.1rem;
-  border-radius: 12px;
-  background-color: transparent;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: visible;
-  user-select: none;
-}
-
-/* Fade transition helper */
-.fade-transition {
-  animation: fadeIn var(--transition-speed) ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Utility for metallic gold text */
-.metallic-gold-text {
+/* Typography with metallic shimmer depending on theme */
+body.theme-light h1,
+body.theme-light h2,
+body.theme-light h3,
+body.theme-light p.accent-text {
   background: linear-gradient(
     135deg,
     #d4af37 0%,
@@ -89,19 +55,13 @@ button {
   -webkit-text-fill-color: transparent;
   animation: gold-shimmer 3s linear infinite;
   font-weight: 700;
-  text-shadow:
-    0 0 5px #f7c873,
-    0 0 10px #b68e17,
-    0 0 20px #d4af37;
+  /* NO text-shadow or glow */
 }
 
-@keyframes gold-shimmer {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
-/* Utility for metallic silver text */
-.metallic-silver-text {
+body.theme-dark h1,
+body.theme-dark h2,
+body.theme-dark h3,
+body.theme-dark p.accent-text {
   background: linear-gradient(
     135deg,
     #c0c0c0 0%,
@@ -115,10 +75,12 @@ button {
   -webkit-text-fill-color: transparent;
   animation: silver-shimmer 3s linear infinite;
   font-weight: 700;
-  text-shadow:
-    0 0 5px #e0e0e0,
-    0 0 10px #a0a0a0,
-    0 0 20px #c0c0c0;
+  /* NO text-shadow or glow */
+}
+
+@keyframes gold-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
 @keyframes silver-shimmer {
@@ -126,29 +88,83 @@ button {
   100% { background-position: 200% 50%; }
 }
 
-/* Base card/button glow styles */
-.glow-border {
-  position: relative;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  background-clip: padding-box;
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  overflow: visible;
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
-.glow-border::before {
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+}
+
+/* Base button and card styles */
+button, .card {
+  font-family: var(--font-main);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Glow border base */
+.glow-border {
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Blue glow for light theme */
+body.theme-light .glow-border::before {
   content: '';
   position: absolute;
   top: -3px; bottom: -3px;
   left: -3px; right: -3px;
   border-radius: 15px;
-  z-index: -1;
+  background: var(--glow-gradient-blue);
+  animation: gradient-move-blue 3s linear infinite;
   filter: blur(6px);
-  animation: gradient-move 3s linear infinite;
-  background-size: 200% 200%;
+  z-index: -1;
+  transition: filter 0.3s ease;
 }
 
-.glow-border:hover::before {
+body.theme-light .glow-border:hover::before {
   filter: blur(12px);
+}
+
+/* Red glow for dark theme */
+body.theme-dark .glow-border::before {
+  content: '';
+  position: absolute;
+  top: -3px; bottom: -3px;
+  left: -3px; right: -3px;
+  border-radius: 15px;
+  background: var(--glow-gradient-red);
+  animation: gradient-move-red 3s linear infinite;
+  filter: blur(6px);
+  z-index: -1;
+  transition: filter 0.3s ease;
+}
+
+body.theme-dark .glow-border:hover::before {
+  filter: blur(12px);
+}
+
+/* Gradient animations */
+@keyframes gradient-move-blue {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes gradient-move-red {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
