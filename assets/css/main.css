@@ -122,39 +122,58 @@ button, .card {
   background-clip: padding-box;
 }
 
-/* Light theme lighter blue energy aura */
+/* Light theme: Electric bright blue aura */
 body.theme-light .glow-border::before {
-  background: linear-gradient(270deg, #3a89c9, #5ec1ff, #a1d8ff, #5ec1ff, #3a89c9);
-  animation: energy-blue-pulse 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px #5ec1ff);
+  background: linear-gradient(270deg, #007fff, #00d0ff, #66faff, #00d0ff, #007fff);
+  animation: energy-blue-pulse 2.5s ease-in-out infinite;
+  filter:
+    drop-shadow(0 0 6px #00d0ff)
+    drop-shadow(0 0 12px #00d0ff)
+    drop-shadow(0 0 24px #66faff);
 }
 
-/* Dark theme lighter red energy aura */
+/* Dark theme: Fiery bright red aura */
 body.theme-dark .glow-border::before {
-  background: linear-gradient(270deg, #a63232, #ff4d4d, #ff8a8a, #ff4d4d, #a63232);
-  animation: energy-red-pulse 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px #ff4d4d);
+  background: linear-gradient(270deg, #c70039, #ff1744, #ff6e7f, #ff1744, #c70039);
+  animation: energy-red-pulse 2.5s ease-in-out infinite;
+  filter:
+    drop-shadow(0 0 6px #ff1744)
+    drop-shadow(0 0 12px #ff1744)
+    drop-shadow(0 0 24px #ff6e7f);
 }
 
-/* Adjusted pulse animations for lighter glow */
+/* Enhanced animation for fast, pulsing magical aura */
 @keyframes energy-blue-pulse {
   0%, 100% {
     background-position: 0% 50%;
-    filter: drop-shadow(0 0 8px #5ec1ff);
+    filter:
+      drop-shadow(0 0 6px #00d0ff)
+      drop-shadow(0 0 12px #00d0ff)
+      drop-shadow(0 0 24px #66faff);
   }
   50% {
     background-position: 100% 50%;
-    filter: drop-shadow(0 0 14px #a1d8ff);
+    filter:
+      drop-shadow(0 0 12px #66faff)
+      drop-shadow(0 0 18px #a5ffff)
+      drop-shadow(0 0 32px #d0ffff);
   }
 }
 
 @keyframes energy-red-pulse {
   0%, 100% {
     background-position: 0% 50%;
-    filter: drop-shadow(0 0 8px #ff4d4d);
+    filter:
+      drop-shadow(0 0 6px #ff1744)
+      drop-shadow(0 0 12px #ff1744)
+      drop-shadow(0 0 24px #ff6e7f);
   }
   50% {
     background-position: 100% 50%;
-    filter: drop-shadow(0 0 14px #ff8a8a);
+    filter:
+      drop-shadow(0 0 12px #ff6e7f)
+      drop-shadow(0 0 18px #ffc1c9)
+      drop-shadow(0 0 32px #ffe8ec);
   }
 }
+
