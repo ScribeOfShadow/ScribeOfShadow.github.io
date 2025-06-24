@@ -128,33 +128,36 @@ button, .card {
   overflow: visible;
 }
 
-/* Standardize the glow as pure outline via box-shadow */
-.glow-border::before {
+.card.glow-border::before,
+button.glow-border::before {
   content: '';
   position: absolute;
-  inset: 0; /* shorthand top:0; left:0; right:0; bottom:0; */
-  border-radius: 12px;
+  inset: -6px;
+  border-radius: inherit;
   z-index: -1;
   pointer-events: none;
-  background: transparent; /* no inner fill */
+  background: none;
 }
 
 
-body.theme-light .glow-border::before {
+body.theme-light .card.glow-border::before,
+body.theme-light button.glow-border::before {
   box-shadow:
-    0 0 8px #00cfff,
-    0 0 16px #66faff,
-    0 0 24px #b3f1ff;
+    0 0 6px #00cfff,
+    0 0 12px #66faff,
+    0 0 20px #b3f1ff;
   animation: auraBluePulse 3s ease-in-out infinite;
 }
 
-body.theme-dark .glow-border::before {
+body.theme-dark .card.glow-border::before,
+body.theme-dark button.glow-border::before {
   box-shadow:
-    0 0 8px #ff2e4f,
-    0 0 16px #ff6e7f,
-    0 0 24px #ffc2c9;
+    0 0 6px #ff2e4f,
+    0 0 12px #ff6e7f,
+    0 0 20px #ffc2c9;
   animation: auraRedPulse 3s ease-in-out infinite;
 }
+
 
 
 @keyframes auraBluePulse {
@@ -179,5 +182,8 @@ body.theme-dark .glow-border::before {
   }
 }
 
+.glow-border:not(.card):not(button)::before {
+  background: magenta !important;
+}
 
 
