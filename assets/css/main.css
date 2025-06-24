@@ -1,39 +1,19 @@
 /* assets/css/main.css */
 
-/* Font import */
+/* Import modern professional font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
   --transition-speed: 0.6s;
   --font-main: 'Inter', sans-serif;
 
-  /* Light mode (default) */
-  --bg-color: #fdfdfd;
-  --text-color: #1a1a1a;
+  /* Default colors (fallback) */
+  --bg-color: #fff;
+  --text-color: #333;
   --accent-color: #d4af37; /* gold */
-  --soft-glow: rgba(255, 255, 255, 0.6);
-}
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.toggle-wrapper {
-  margin-top: 1rem;
-}
-
-.theme-button {
-  font-size: 1.5rem;
-  border-radius: 50%;
-  padding: 0.5em 0.75em;
-}
-
+/* Base styles */
 body {
   font-family: var(--font-main);
   background-color: var(--bg-color);
@@ -44,31 +24,47 @@ body {
 }
 
 h1, h2, h3 {
-  color: var(--accent-color);
+  font-weight: 700;
+  margin: 0 0 0.5em 0;
 }
 
+p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+/* Container for layout */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Header styling */
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+}
+
+/* Button base style */
 button {
-  background: none;
-  border: 2px solid var(--accent-color);
-  color: var(--accent-color);
-  padding: 0.5em 1em;
+  font-family: var(--font-main);
   font-weight: 600;
   cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0.6em 1.2em;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  background-color: transparent;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+  user-select: none;
 }
 
-button:hover {
-  background-color: var(--accent-color);
-  color: var(--bg-color);
-}
-
-/* Theme transition effect */
-body.theme-light,
-body.theme-dark {
-  transition: background-color var(--transition-speed) ease,
-              color var(--transition-speed) ease;
-}
-
+/* Fade transition helper */
 .fade-transition {
   animation: fadeIn var(--transition-speed) ease forwards;
 }
@@ -76,4 +72,83 @@ body.theme-dark {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Utility for metallic gold text */
+.metallic-gold-text {
+  background: linear-gradient(
+    135deg,
+    #d4af37 0%,
+    #f7c873 25%,
+    #b68e17 50%,
+    #f9d657 75%,
+    #d4af37 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shimmer 3s linear infinite;
+  font-weight: 700;
+  text-shadow:
+    0 0 5px #f7c873,
+    0 0 10px #b68e17,
+    0 0 20px #d4af37;
+}
+
+@keyframes gold-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Utility for metallic silver text */
+.metallic-silver-text {
+  background: linear-gradient(
+    135deg,
+    #c0c0c0 0%,
+    #e0e0e0 25%,
+    #a0a0a0 50%,
+    #f0f0f0 75%,
+    #c0c0c0 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: silver-shimmer 3s linear infinite;
+  font-weight: 700;
+  text-shadow:
+    0 0 5px #e0e0e0,
+    0 0 10px #a0a0a0,
+    0 0 20px #c0c0c0;
+}
+
+@keyframes silver-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Base card/button glow styles */
+.glow-border {
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-clip: padding-box;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  top: -3px; bottom: -3px;
+  left: -3px; right: -3px;
+  border-radius: 15px;
+  z-index: -1;
+  filter: blur(6px);
+  animation: gradient-move 3s linear infinite;
+  background-size: 200% 200%;
+}
+
+.glow-border:hover::before {
+  filter: blur(12px);
 }

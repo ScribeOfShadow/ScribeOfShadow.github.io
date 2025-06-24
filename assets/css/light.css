@@ -2,20 +2,64 @@
 
 :root {
   --bg-color: #ffffff;
-  --text-color: #333333;
-  --accent-color: #f7c873; /* warm gold */
-  --highlight-glow: rgba(255, 255, 255, 0.8);
+  --text-color: #d4af37; /* base gold fallback */
+  --glow-gradient: linear-gradient(270deg, #00c6ff, #0072ff, #00c6ff);
+  --text-shadow-color: #f7c873;
 }
 
-body {
-  background-image: radial-gradient(circle at top center, #ffffff, #f0f0f0);
+body.theme-light {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-header, section {
-  padding: 2rem;
-  box-shadow: 0 0 20px var(--highlight-glow);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  transition: all 0.6s ease;
+/* Text */
+h1, h2, h3, p.accent-text {
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Apply metallic gold */
+h1.metallic-gold-text,
+h2.metallic-gold-text,
+h3.metallic-gold-text,
+p.accent-text.metallic-gold-text {
+  animation-name: gold-shimmer;
+  background: linear-gradient(
+    135deg,
+    #d4af37 0%,
+    #f7c873 25%,
+    #b68e17 50%,
+    #f9d657 75%,
+    #d4af37 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  text-shadow:
+    0 0 5px #f7c873,
+    0 0 10px #b68e17,
+    0 0 20px #d4af37;
+}
+
+/* Cards and buttons backgrounds */
+.card, button {
+  background-color: white;
+  color: var(--text-color);
+  border: none;
+  padding: 1.5rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Blue glowing gradient border */
+.glow-border::before {
+  background: var(--glow-gradient);
+  animation-name: blue-gradient-move;
+}
+
+@keyframes blue-gradient-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
