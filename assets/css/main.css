@@ -138,58 +138,42 @@ button, .card {
 }
 
 
-/* Light theme: Electric bright blue aura */
 body.theme-light .glow-border::before {
-  background: linear-gradient(270deg, #007fff, #00d0ff, #66faff, #00d0ff, #007fff);
-  animation: energy-blue-pulse 2.5s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(102, 250, 255, 0.4), rgba(0, 208, 255, 0.2), transparent 70%);
+  animation: auraBluePulse 3s ease-in-out infinite;
   filter:
-    drop-shadow(0 0 6px #00d0ff)
-    drop-shadow(0 0 12px #00d0ff)
-    drop-shadow(0 0 24px #66faff);
+    drop-shadow(0 0 6px #00cfff)
+    drop-shadow(0 0 12px #66faff)
+    drop-shadow(0 0 20px #b3f1ff);
 }
 
-/* Dark theme: Fiery bright red aura */
 body.theme-dark .glow-border::before {
-  background: linear-gradient(270deg, #c70039, #ff1744, #ff6e7f, #ff1744, #c70039);
-  animation: energy-red-pulse 2.5s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(255, 110, 127, 0.4), rgba(255, 23, 68, 0.2), transparent 70%);
+  animation: auraRedPulse 3s ease-in-out infinite;
   filter:
-    drop-shadow(0 0 6px #ff1744)
-    drop-shadow(0 0 12px #ff1744)
-    drop-shadow(0 0 24px #ff6e7f);
+    drop-shadow(0 0 6px #ff2e4f)
+    drop-shadow(0 0 12px #ff6e7f)
+    drop-shadow(0 0 20px #ffc2c9);
 }
-
-/* Enhanced animation for fast, pulsing magical aura */
-@keyframes energy-blue-pulse {
+@keyframes auraBluePulse {
   0%, 100% {
-    background-position: 0% 50%;
-    filter:
-      drop-shadow(0 0 6px #00d0ff)
-      drop-shadow(0 0 12px #00d0ff)
-      drop-shadow(0 0 24px #66faff);
+    transform: scale(1);
+    opacity: 0.8;
   }
   50% {
-    background-position: 100% 50%;
-    filter:
-      drop-shadow(0 0 12px #66faff)
-      drop-shadow(0 0 18px #a5ffff)
-      drop-shadow(0 0 32px #d0ffff);
+    transform: scale(1.05);
+    opacity: 1;
   }
 }
 
-@keyframes energy-red-pulse {
+@keyframes auraRedPulse {
   0%, 100% {
-    background-position: 0% 50%;
-    filter:
-      drop-shadow(0 0 6px #ff1744)
-      drop-shadow(0 0 12px #ff1744)
-      drop-shadow(0 0 24px #ff6e7f);
+    transform: scale(1);
+    opacity: 0.8;
   }
   50% {
-    background-position: 100% 50%;
-    filter:
-      drop-shadow(0 0 12px #ff6e7f)
-      drop-shadow(0 0 18px #ffc1c9)
-      drop-shadow(0 0 32px #ffe8ec);
+    transform: scale(1.05);
+    opacity: 1;
   }
 }
 
