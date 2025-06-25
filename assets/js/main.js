@@ -21,7 +21,7 @@ scene.add(pointLight);
 
 // Load the goblet model
 const loader = new GLTFLoader();
-loader.load('assets/models/brass_goblets.gltf', (gltf) => {
+loader.load('assets/models/brass_goblets.glb', (gltf) => {
   const goblets = gltf.scene;
   goblets.scale.set(1.5, 1.5, 1.5);
   goblets.position.set(0, -1, 0);
