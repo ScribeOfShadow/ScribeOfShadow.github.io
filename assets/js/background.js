@@ -1,47 +1,55 @@
-// assets/js/background.js
-const canvas = document.getElementById("bg-scene");
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
+
+const canvas = document.getElementById('bg-scene');
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(innerWidth, innerHeight);
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100);
-camera.position.z = 5;
+const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 1000);
+camera.position.set(0,1,5);
 
-// Particle material
-const theme = document.body.classList.contains("theme-dark") ? "dark" : "light";
-const color = theme === "dark" ? 0xff2e4f : 0x00cfff;
+const pmremGenerator = new THREE.PMREMGenerator(renderer);
+pmremGenerator.compileEquirectangularShader();
 
-const geometry = new THREE.BufferGeometry();
-const count = 300;
-const positions = new Float32Array(count * 3);
+let envMaps = {};
 
-for (let i = 0; i < count * 3; i++) {
-  positions[i] = (Math.random() - 0.5) * 20;
+function loadEnvironment(name, url) {
+  new RGBELoader().setDataType(THREE.UnsignedByteType)
+    .load(url, hdrEquirect => {
+      let envMap = pmremGenerator.fromEquirectangular(hdrEquirect).texture;
+      envMaps[name] = envMap;
+      hdrEquirect.dispose();
+      if (!scene.environment) switchEnv(name);
+    });
 }
-geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-const material = new THREE.PointsMaterial({
-  color,
-  size: 0.1,
-  transparent: true,
-  opacity: 0.7
-});
+loadEnvironment('pantheon', 'assets/hdr/pantheon.hdr');
+loadEnvironment('cathedral', 'assets/hdr/cathedral.hdr');
 
-const points = new THREE.Points(geometry, material);
-scene.add(points);
+function switchEnv(theme) {
+  if (envMaps[theme]) {
+    scene.environment = envMaps[theme];
+    scene.background = envMaps[theme];
+  }
+}
 
-// Animate
+function updateTheme() {
+  const theme = document.body.classList.contains('theme-dark') ? 'cathedral' : 'pantheon';
+  switchEnv(theme);
+}
+
+document.addEventListener('DOMContentLoaded', updateTheme);
+new MutationObserver(updateTheme).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
 function animate() {
   requestAnimationFrame(animate);
-  points.rotation.y += 0.0008;
   renderer.render(scene, camera);
 }
 animate();
 
-// Handle resize
 window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = innerWidth/innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(innerWidth, innerHeight);
 });
