@@ -88,11 +88,12 @@ body.theme-dark p.accent-text {
   100% { background-position: 200% 50%; }
 }
 
-/* Container */
 .container {
-  max-width: 900px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 /* Header */
