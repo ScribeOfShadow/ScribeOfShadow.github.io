@@ -4,17 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Solomon David | Dev + Dreamwalker</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/light.css" id="theme-style" />
+
+  <!-- Theme toggle script (non-module) -->
   <script defer src="assets/js/theme-toggle.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/loaders/RGBELoader.js"></script>
-<script defer src="assets/js/background.js"></script>
-<canvas id="bg-scene"></canvas>
+
+  <!-- Your background canvas handled in background.js -->
+  <style>
+    canvas#bg-scene {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
 </head>
 
 <body class="theme-light fade-transition">
+  <!-- Canvas for Three.js background -->
   <canvas id="bg-scene"></canvas>
+
   <header>
     <div class="container">
       <h1>Solomon David</h1>
@@ -27,10 +39,8 @@
 
   <main>
     <section class="card glow-border">
-      
-        <h2>About</h2>
-        <p class="accent-text">Immersive fantasy worlds and rogue-likes await.</p>
-      
+      <h2>About</h2>
+      <p class="accent-text">Immersive fantasy worlds and rogue-likes await.</p>
     </section>
 
     <section class="card glow-border" style="margin-top: 2rem;">
@@ -49,6 +59,11 @@
       </div>
     </section>
   </main>
+
+  <!-- Use module script for Three.js scene -->
   <script type="module" src="assets/js/main.js"></script>
+
+  <!-- Non-module background script (optional if it's not using ES modules) -->
+  <script defer src="assets/js/background.js"></script>
 </body>
 </html>
