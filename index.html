@@ -2,68 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Solomon David | Dev + Dreamwalker</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/light.css" id="theme-style" />
-
-  <!-- Theme toggle script (non-module) -->
-  <script defer src="assets/js/theme-toggle.js"></script>
-
-  <!-- Your background canvas handled in background.js -->
-  <style>
-    canvas#bg-scene {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Goblet</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+<body>
+  <canvas id="bg"></canvas>
 
-<body class="theme-light fade-transition">
-  <!-- Canvas for Three.js background -->
-  <canvas id="bg-scene"></canvas>
-
-  <header>
-    <div class="container">
-      <h1>Solomon David</h1>
-      <p class="accent-text">Indie Game Developer | Alchemist of Aesthetics</p>
-      <div class="toggle-wrapper">
-        <button id="themeToggle" class="glow-border" aria-label="Toggle Theme" title="Toggle Theme">🌓</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="card glow-border">
-      <h2>About</h2>
-      <p class="accent-text">Immersive fantasy worlds and rogue-likes await.</p>
-    </section>
-
-    <section class="card glow-border" style="margin-top: 2rem;">
-      <div class="container">
-        <h2>Projects</h2>
-        <p class="accent-text">Currently crafting immersive fantasy worlds and sleek roguelikes.</p>
-      </div>
-    </section>
-
-    <section class="card glow-border" style="margin-top: 2rem;">
-      <div class="container">
-        <h2>Contact</h2>
-        <p class="accent-text">
-          Reach out at <a href="mailto:solomon@example.com" style="color: inherit; text-decoration: underline;">solomon@example.com</a>
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Use module script for Three.js scene -->
-<script type="module" src="assets/js/main.js"></script>
-
-  <!-- Non-module background script (optional if it's not using ES modules) -->
-  <script type="module" src="assets/js/background.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
